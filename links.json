@@ -1,0 +1,34 @@
+{
+  "links": [
+    {
+      "titel": "Telekom Profis Shop",
+      "beschreibung": "Der Telekom Profis Shop bietet eine breite Auswahl an Telekom Produkten an.",
+      "link": "https://rebrand.ly/surfjetzt"
+    },
+    {
+      "titel": "Glasfaser und DSL",
+      "beschreibung": "Finden Sie den passenden Glasfaser- und DSL-Tarif – ideal für schnelles Surfen zu Hause.",
+      "link": "https://www.telekom-profis.de/shop/festnetz_und_surfen/"
+    },
+    {
+      "titel": "Mobilfunk-Tarife",
+      "beschreibung": "Entdecken Sie die aktuellen MagentaMobil-Tarife mit einem Smartphone oder ohne.",
+      "link": "https://www.telekom-profis.de/shop/mobilfunk/telefonieren-und-surfen/mit-smartphone.html"
+    },
+    {
+      "titel": "Congstar Allnet Flat",
+      "beschreibung": "Flexible Smartphone-Tarife von Congstar mit Allnet-Flat – ohne Laufzeit und im zuverlässigen Telekom Netz.",
+      "link": "https://www.telekom-profis.de/shop/congstar/tarife/allnet-flat.html"
+    },
+    {
+      "titel": "MagentaTV ohne Internet",
+      "beschreibung": "MagentaTV genießen – auch ohne Internetanschluss bei der Telekom.",
+      "link": "https://www.telekom-profis.de/shop/tv-ohne-internet/"
+    },
+    {
+      "titel": "Verfügbarkeitscheck",
+      "beschreibung": "Prüfen Sie online, ob Glasfaser oder Highspeed-Internet an Ihrer Adresse verfügbar ist.",
+      "link": "https://t-map.telekom.de/tmap2/coverage_checker/"
+    }
+  ]
+}
