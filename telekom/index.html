@@ -7,225 +7,466 @@
     <title>Telekom Lesezeichen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<style>
+@font-face {
+    font-family: 'TeleNeo';
+    src: url('./fonts/Tele_Neo.woff2') format('woff2'),
+         url('./fonts/Tele_Neo.woff') format('woff'),
+         url('./fonts/Tele_Neo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
-        .navbar-custom {
-            background-color: #e2007e;
-            width: 10%;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: visible;
-        }
+@font-face {
+    font-family: 'TeleNeo';
+    src: url('./fonts/Tele_Neo_Bold.woff2') format('woff2'),
+         url('./fonts/Tele_Neo_Bold.woff') format('woff'),
+         url('./fonts/Tele_Neo_Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 
-        @media (max-width: 768px) {
-            .navbar-custom {
-                width: 12%;
-            }
+@font-face {
+    font-family: 'TeleNeo';
+    src: url('./fonts/Tele_Neo_Extrabold.woff2') format('woff2'),
+         url('./fonts/Tele_Neo_Extrabold.woff') format('woff'),
+         url('./fonts/Tele_Neo_Extrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
 
-            .content-area {
-                margin-left: 12% !important;
-            }
-        }
+@font-face {
+    font-family: 'TeleNeo';
+    src: url('./fonts/Tele_Neo_Medium.woff2') format('woff2'),
+         url('./fonts/Tele_Neo_Medium.woff') format('woff'),
+         url('./fonts/Tele_Neo_Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
-        .content-area {
-            margin-left: 10%;
-            padding: 2rem;
-        }
+@font-face {
+    font-family: 'TeleNeo';
+    src: url('./fonts/Tele_Neo_Thin.woff2') format('woff2'),
+         url('./fonts/Tele_Neo_Thin.woff') format('woff'),
+         url('./fonts/Tele_Neo_Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
 
-        .card-custom {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: none;
-            height: 175px;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-        }
+body {
+    background-color: #ffffff;
+    font-family: 'TeleNeo', Arial, sans-serif !important;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-        .card-custom:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        }
+*, *::before, *::after {
+    font-family: 'TeleNeo', Arial, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-        .card-custom.no-animation {
-            transition: none;
-        }
+input, textarea, select, button {
+    font-family: 'TeleNeo', Arial, sans-serif !important;
+}
 
-        .card-custom.no-animation:hover {
-            transform: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.card-title {
+    font-family: 'TeleNeo', Arial, sans-serif !important;
+    font-weight: bold !important;
+    font-size: 1.5rem;
+}
 
-        .card-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+.card-text {
+    font-family: 'TeleNeo', Arial, sans-serif !important;
+}
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
+.settings-card h5 {
+    font-family: 'TeleNeo', Arial, sans-serif !important;
+    font-weight: bold !important;
+    font-size: 1.4rem;
+}
 
-        .fade-in.no-animation {
-            opacity: 1;
-            transform: none;
-            animation: none;
-        }
+.setting-row span {
+    font-family: 'TeleNeo', Arial, sans-serif !important;
+}
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1.2rem;
+    }
+    
+    .settings-card h5 {
+        font-size: 1.1rem;
+    }
+}
 
-        .logo-container {
-            padding: 1rem;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-        }
+@media (max-width: 480px) {
+    .card-title {
+        font-size: 1rem;
+    }
+    
+    .settings-card h5 {
+        font-size: 1rem;
+    }
+}
 
-        .logo-container img {
-            max-width: 80%;
-            height: auto;
-        }
+.navbar-custom {
+    background-color: #e2007e;
+    width: 10%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: visible;
+}
 
-        .menu-container {
-            padding: 1rem;
-            text-align: center;
-            position: sticky;
-            bottom: 1rem;
-        }
+@media (max-width: 768px) {
+    .navbar-custom {
+        width: 12%;
+    }
 
-        .menu-dots {
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            margin: 0 auto;
-            transition: background-color 0.3s;
-        }
+    .content-area {
+        margin-left: 12% !important;
+    }
+}
 
-        .menu-dots:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
+.content-area {
+    margin-left: 10%;
+    padding: 2rem;
+}
 
-        .menu-dots::before {
-            content: '⋮';
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-        }
+.iframe-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 10%;
+    z-index: 1000;
+    background: white;
+}
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+.iframe-container.active {
+    display: block;
+}
 
-        .overlay.show {
-            display: flex;
-            opacity: 1;
-            align-items: center;
-            justify-content: center;
-        }
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
-        .settings-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-            min-width: 300px;
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
+.back-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: #e2007a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'TeleNeo', Arial, sans-serif;
+    display: none;
+}
 
-        .overlay.show .settings-card {
-            transform: scale(1);
-        }
+.back-button.active {
+    display: block;
+}
 
-        .toggle-switch {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background-color: #ddd;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+@media (max-width: 768px) {
+    .iframe-container {
+        left: 12%;
+    }
+}
 
-        .toggle-switch.active {
-            background-color: #e2007e;
-        }
+.card-custom {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+    height: 175px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
 
-        .toggle-slider {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background-color: white;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
+.card-custom:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
 
-        .toggle-switch.active .toggle-slider {
-            transform: translateX(30px);
-        }
+.card-custom.no-animation {
+    transition: none;
+}
 
-        .setting-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
+.card-custom.no-animation:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #999;
-        }
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-        a {
-            text-decoration: none !important;
-        }
-    </style>
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-in.no-animation {
+    opacity: 1;
+    transform: none;
+    animation: none;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-container {
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.logo-container img {
+    max-width: 80%;
+    height: auto;
+}
+
+.menu-container {
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    bottom: 1rem;
+}
+
+.menu-dots {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: background-color 0.3s;
+}
+
+.menu-dots:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.menu-dots::before {
+    content: '⋮';
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.show {
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.overlay.show .settings-card {
+    transform: scale(1);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #ddd;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-switch.active {
+    background-color: #e2007e;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.toggle-switch.active .toggle-slider {
+    transform: translateX(30px);
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.group-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.group-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.group-card .icon {
+    font-size: 2.5rem;
+    color: #e2007a;
+    margin-bottom: 1rem;
+}
+
+.subtopics-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 10%;
+    background: white;
+    z-index: 1000;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.subtopics-container.active {
+    display: block;
+}
+
+.subtopics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2007a;
+}
+
+.subtopics-header h2 {
+    color: #e2007a;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.back-to-groups {
+    background: #e2007a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'TeleNeo', Arial, sans-serif;
+}
+
+.subtopic-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.subtopic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .subtopics-container {
+        left: 12%;
+    }
+    
+    .group-card {
+        height: 180px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -241,10 +482,24 @@
 
     <div class="content-area">
         <div class="container-fluid">
-            <div class="row" id="cardsContainer">
+            <div class="row" id="groupsContainer">
             </div>
         </div>
     </div>
+
+    <div id="subtopicsContainer" class="subtopics-container">
+        <div class="subtopics-header">
+            <h2 id="subtopicsTitle"></h2>
+            <button class="back-to-groups" id="backToGroups">Zurück zu den Gruppen</button>
+        </div>
+        <div id="subtopicsContent"></div>
+    </div>
+
+    <div class="iframe-container" id="iframeContainer">
+        <iframe id="coverageIframe" src="about:blank"></iframe>
+    </div>
+
+    <button class="back-button" id="backButton">Zurück</button>
 
     <div class="overlay" id="settingsOverlay">
         <div class="settings-card">
@@ -266,142 +521,244 @@
         </div>
     </div>
 
-    <script>
-        let animationsEnabled = true;
-        let fullscreenEnabled = false;
+<script>
+let animationsEnabled = true;
+let fullscreenEnabled = false;
+let currentGroup = null;
 
-        try {
-            animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
-            fullscreenEnabled = localStorage.getItem('fullscreenEnabled') === 'true';
-        } catch (e) { }
+try {
+    animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+    fullscreenEnabled = localStorage.getItem('fullscreenEnabled') === 'true';
+} catch (e) { }
 
-        const overlay = document.getElementById('settingsOverlay');
-        const menuButton = document.getElementById('menuButton');
-        const closeButton = document.getElementById('closeSettings');
-        const animationToggle = document.getElementById('animationToggle');
-        const fullscreenToggle = document.getElementById('fullscreenToggle');
+const overlay = document.getElementById('settingsOverlay');
+const menuButton = document.getElementById('menuButton');
+const closeButton = document.getElementById('closeSettings');
+const animationToggle = document.getElementById('animationToggle');
+const fullscreenToggle = document.getElementById('fullscreenToggle');
+const subtopicsContainer = document.getElementById('subtopicsContainer');
+const subtopicsTitle = document.getElementById('subtopicsTitle');
+const subtopicsContent = document.getElementById('subtopicsContent');
+const backToGroups = document.getElementById('backToGroups');
 
-        function toggleFullscreen() {
-            try {
-                if (fullscreenEnabled && !document.fullscreenElement) {
-                    if (document.documentElement.requestFullscreen) {
-                        document.documentElement.requestFullscreen();
-                    } else if (document.documentElement.webkitRequestFullscreen) {
-                        document.documentElement.webkitRequestFullscreen();
-                    } else if (document.documentElement.msRequestFullscreen) {
-                        document.documentElement.msRequestFullscreen();
-                    }
-                } else if (!fullscreenEnabled && document.fullscreenElement) {
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                    } else if (document.webkitExitFullscreen) {
-                        document.webkitExitFullscreen();
-                    } else if (document.msExitFullscreen) {
-                        document.msExitFullscreen();
-                    }
-                }
-            } catch (e) { }
-        }
-
-        function updateAnimations() {
-            const cards = document.querySelectorAll('.card-custom');
-            for (let i = 0; i < cards.length; i++) {
-                if (animationsEnabled) {
-                    cards[i].classList.remove('no-animation');
-                } else {
-                    cards[i].classList.add('no-animation');
-                }
+function toggleFullscreen() {
+    try {
+        if (fullscreenEnabled && !document.fullscreenElement) {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+        } else if (!fullscreenEnabled && document.fullscreenElement) {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
             }
         }
+    } catch (e) { }
+}
 
-        menuButton.onclick = function () {
-            overlay.classList.add('show');
-        };
-
-        closeButton.onclick = function () {
-            overlay.classList.remove('show');
-        };
-
-        overlay.onclick = function (e) {
-            if (e.target === overlay) {
-                overlay.classList.remove('show');
-            }
-        };
-
-        animationToggle.onclick = function () {
-            animationsEnabled = !animationsEnabled;
-            try {
-                localStorage.setItem('animationsEnabled', animationsEnabled);
-            } catch (e) { }
-            this.classList.toggle('active', animationsEnabled);
-            updateAnimations();
-        };
-
-        fullscreenToggle.onclick = function () {
-            fullscreenEnabled = !fullscreenEnabled;
-            try {
-                localStorage.setItem('fullscreenEnabled', fullscreenEnabled);
-            } catch (e) { }
-            this.classList.toggle('active', fullscreenEnabled);
-            toggleFullscreen();
-        };
-
+function updateAnimations() {
+    const cards = document.querySelectorAll('.card-custom, .group-card, .subtopic-card');
+    for (let i = 0; i < cards.length; i++) {
         if (animationsEnabled) {
-            animationToggle.classList.add('active');
-        }
-
-        if (fullscreenEnabled) {
-            fullscreenToggle.classList.add('active');
-            toggleFullscreen();
-        }
-
-        function loadLinks() {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'links.json?' + Date.now(), true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        try {
-                            const data = JSON.parse(xhr.responseText);
-                            const container = document.getElementById('cardsContainer');
-
-                            for (let i = 0; i < data.links.length; i++) {
-                                const link = data.links[i];
-                                const card = document.createElement('div');
-                                card.className = 'col-lg-4 col-md-6 col-sm-12 mb-4';
-
-                                if (animationsEnabled) {
-                                    card.classList.add('fade-in');
-                                    card.style.animationDelay = (i * 0.1) + 's';
-                                }
-
-                                card.innerHTML = '<a href="' + link.link + '" target="_blank" rel="noopener noreferrer" class="text-decoration-none">' +
-                                    '<div class="card card-custom' +
-                                    (!animationsEnabled ? ' no-animation' : '') + '">' +
-                                    '<div class="card-body p-4">' +
-                                    '<h5 class="card-title text-dark fw-bold mb-3">' + link.titel + '</h5>' +
-                                    '<p class="card-text text-muted">' + link.beschreibung + '</p>' +
-                                    '</div></div></a>';
-
-                                container.appendChild(card);
-                            }
-                        } catch (e) {
-                            console.error('JSON Parse Error:', e);
-                        }
-                    } else {
-                        console.error('Load Error:', xhr.status);
-                    }
-                }
-            };
-            xhr.send();
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadLinks);
+            cards[i].classList.remove('no-animation');
         } else {
-            loadLinks();
+            cards[i].classList.add('no-animation');
         }
-    </script>
+    }
+}
+
+// Safari-kompatible Link-Öffnung
+function openExternalLink(url) {
+    try {
+        // Für Safari: Erstelle ein verstecktes <a> Element
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } catch (e) {
+        // Fallback für andere Browser
+        try {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        } catch (e2) {
+            // Letzter Fallback
+            window.location.href = url;
+        }
+    }
+}
+
+menuButton.onclick = function () {
+    overlay.classList.add('show');
+};
+
+closeButton.onclick = function () {
+    overlay.classList.remove('show');
+};
+
+overlay.onclick = function (e) {
+    if (e.target === overlay) {
+        overlay.classList.remove('show');
+    }
+};
+
+animationToggle.onclick = function () {
+    animationsEnabled = !animationsEnabled;
+    try {
+        localStorage.setItem('animationsEnabled', animationsEnabled);
+    } catch (e) { }
+    this.classList.toggle('active', animationsEnabled);
+    updateAnimations();
+};
+
+fullscreenToggle.onclick = function () {
+    fullscreenEnabled = !fullscreenEnabled;
+    try {
+        localStorage.setItem('fullscreenEnabled', fullscreenEnabled);
+    } catch (e) { }
+    this.classList.toggle('active', fullscreenEnabled);
+    toggleFullscreen();
+};
+
+if (animationsEnabled) {
+    animationToggle.classList.add('active');
+}
+
+if (fullscreenEnabled) {
+    fullscreenToggle.classList.add('active');
+    toggleFullscreen();
+}
+
+function loadGroups() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'links.json?' + Date.now(), true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    const data = JSON.parse(xhr.responseText);
+                    const container = document.getElementById('groupsContainer');
+
+                    for (let i = 0; i < data.gruppen.length; i++) {
+                        const gruppe = data.gruppen[i];
+                        const card = document.createElement('div');
+                        card.className = 'col-lg-4 col-md-6 col-sm-12 mb-4';
+
+                        if (animationsEnabled) {
+                            card.classList.add('fade-in');
+                            card.style.animationDelay = (i * 0.1) + 's';
+                        }
+
+                        card.innerHTML = '<div class="group-card' +
+                            (!animationsEnabled ? ' no-animation' : '') + '" data-group-index="' + i + '">' +
+                            '<div class="card-body p-4">' +
+                            '<h5 class="card-title text-dark fw-bold mb-3">' + gruppe.titel + '</h5>' +
+                            '<p class="card-text text-muted">' + gruppe.beschreibung + '</p>' +
+                            '</div></div>';
+
+                        container.appendChild(card);
+                    }
+
+                    // Event Listener für Gruppen-Karten
+                    const groupCards = document.querySelectorAll('.group-card');
+                    for (let i = 0; i < groupCards.length; i++) {
+                        groupCards[i].onclick = function() {
+                            const groupIndex = this.getAttribute('data-group-index');
+                            showSubtopics(data.gruppen[groupIndex]);
+                        };
+                    }
+
+                } catch (e) {
+                    console.error('JSON Parse Error:', e);
+                }
+            } else {
+                console.error('Load Error:', xhr.status);
+            }
+        }
+    };
+    xhr.send();
+}
+
+function showSubtopics(gruppe) {
+    currentGroup = gruppe;
+    subtopicsTitle.textContent = gruppe.titel;
+    subtopicsContent.innerHTML = '';
+
+    for (let i = 0; i < gruppe.unterthemen.length; i++) {
+        const unterthema = gruppe.unterthemen[i];
+        const card = document.createElement('div');
+        card.className = 'subtopic-card p-4 mb-3';
+        if (animationsEnabled) {
+            card.classList.add('fade-in');
+            card.style.animationDelay = (i * 0.1) + 's';
+        }
+        
+        card.innerHTML = '<div class="cursor-pointer" data-link="' + unterthema.link + '"' + 
+            (unterthema.iframe ? ' data-iframe="true"' : '') + '>' +
+            '<h5 class="card-title text-dark fw-bold mb-2">' + unterthema.titel + '</h5>' +
+            '<p class="card-text text-muted mb-0">' + unterthema.beschreibung + '</p>' +
+            '</div>';
+        
+        subtopicsContent.appendChild(card);
+    }
+
+    subtopicsContainer.classList.add('active');
+
+    // Event Listener für alle Links
+    const linkElements = subtopicsContent.querySelectorAll('[data-link]');
+    for (let i = 0; i < linkElements.length; i++) {
+        linkElements[i].onclick = function() {
+            const url = this.getAttribute('data-link');
+            const isIframe = this.getAttribute('data-iframe') === 'true';
+            
+            if (isIframe) {
+                // iFrame öffnen
+                const iframeContainer = document.getElementById('iframeContainer');
+                const iframe = document.getElementById('coverageIframe');
+                const backButton = document.getElementById('backButton');
+                
+                iframe.src = url;
+                iframeContainer.classList.add('active');
+                backButton.classList.add('active');
+            } else {
+                // Externe Seite öffnen (Safari-kompatibel)
+                openExternalLink(url);
+            }
+        };
+    }
+}
+
+backToGroups.onclick = function() {
+    subtopicsContainer.classList.remove('active');
+    currentGroup = null;
+};
+
+// Event Listener für Zurück-Button des iFrames
+document.getElementById('backButton').onclick = function() {
+    const iframeContainer = document.getElementById('iframeContainer');
+    const iframe = document.getElementById('coverageIframe');
+    const backButton = document.getElementById('backButton');
+    
+    iframe.src = 'about:blank';
+    iframeContainer.classList.remove('active');
+    backButton.classList.remove('active');
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadGroups);
+} else {
+    loadGroups();
+}
+</script>
 </body>
 
 </html>
